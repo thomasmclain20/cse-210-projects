@@ -5,9 +5,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        DisplayManager displayManager = new DisplayManager();
+        Display displayManager = new Display();
         FileManager fileManager = new FileManager();
-        List<JournalEntry> entries = new List<JournalEntry>();
+        List<Entry> entries = new List<Entry>();
         bool running = true;
 
         while (running)
@@ -23,11 +23,12 @@ class Program
                     string title = Console.ReadLine();
                     Console.Write("Your thoughts: ");
                     string content = Console.ReadLine();
+                    
+                    //this gets the current date and time in a string
+                    DateTime theCurrentTime = DateTime.Now;
+                    string dateText = theCurrentTime.ToShortDateString();
 
-                    TextEntry newEntry = new TextEntry();
-                    newEntry.Date = DateTime.Now;
-                    newEntry.Title = title;
-                    newEntry.Content = content;
+                    Entry newEntry = new Entry(dateText, title, content);
 
                     entries.Add(newEntry);
                     displayManager.ShowSuccess("Entry added");
@@ -37,7 +38,7 @@ class Program
                     Console.WriteLine("\n=== Journal Entires ===");
                     foreach (var entry in entries)
                     {
-                        entry.Display();
+                        entry.PrintEntry();
                     }
                     break;
                 

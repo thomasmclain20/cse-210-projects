@@ -6,7 +6,7 @@
   {
       private string fileName = "journal.txt";
 
-      public void SaveEntries(List<JournalEntry> entries, string fileName)
+      public void SaveEntries(List<Entry> entries, string fileName)
       {
           try
           {
@@ -27,9 +27,9 @@
           }
       }
 
-      public List<JournalEntry> LoadEntries(string fileName)
+      public List<Entry> LoadEntries(string fileName)
       {
-          List<JournalEntry> entries = new List<JournalEntry>();
+          List<Entry> entries = new List<Entry>();
 
           try
           {
@@ -45,8 +45,8 @@
                           string title = lines[i + 1].Replace("TITLE:", "");
                           string content = lines[i + 2].Replace("CONTENT:", "");
 
-                          TextEntry entry = new TextEntry();
-                          entry.Date = DateTime.Parse(date);
+                          Entry entry = new Entry(date, title, content);
+                          entry.Date = date;
                           entry.Title = title;
                           entry.Content = content;
 

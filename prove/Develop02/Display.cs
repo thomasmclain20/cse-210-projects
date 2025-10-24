@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 
-public class DisplayManager
+public class Display
 {
     private List<string> prompts = new List<string>
     {

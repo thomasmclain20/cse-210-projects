@@ -1,25 +1,48 @@
 using System;
 
-
-public abstract class JournalEntry
+public class Entry
 {
-    public DateTime Date { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-    public abstract void Display();
-    public abstract string GetSummary();
-}
-
-public class TextEntry : JournalEntry
-{
-    public override void Display()
+    private string _date;
+    private string _title;
+    private string _content;
+    
+    //constructor for the Entry class
+    public Entry(string date, string title, string content)
     {
-        Console.WriteLine($"{Date:yyy-MM-dd} - {Title}");
-        Console.WriteLine(Content);
+        _date = date;
+        _title = title;
+        _content = content;
     }
 
-    public override string GetSummary()
+    //property to access the Date
+    public string Date
     {
-        return $"{Title} ({Content.Length} chracters)";
+        get { return _date; }
+        set { _date = value; }
     }
+
+    //property to access the title
+    public string Title
+    {
+        get { return _title; }
+        set { _title = value; }
+    }
+
+    //property to access the Content
+    public string Content
+    {
+        get { return _content; }
+        set { _content = value; }
+    }
+
+    //public method to display entries
+    public void PrintEntry ()
+    {
+        Console.WriteLine($" {_date}");
+        Console.WriteLine($"\n");
+        Console.WriteLine($" {_title}");
+        Console.WriteLine($"\n");
+        Console.WriteLine($" {_content}");
+    }
+
 }

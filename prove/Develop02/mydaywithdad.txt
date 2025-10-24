@@ -1,0 +1,4 @@
+DATE:10/23/2025
+TITLE:my day
+CONTENT:my dad helped me learn how to code properly
+---END ENTRY---
