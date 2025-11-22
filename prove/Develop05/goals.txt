@@ -1,0 +1,5 @@
+20
+Simple:10 :    Scriptures    :    Read your scriptures for 30 minutes    : 1
+Eternal:10:Temple Trip:Go to the temple and do a session
+Checklist:10:Go on a run:Take a run around the park:70:7:0
+Simple:10 :  Get you homework done  :  Get your stuff done ya slacker!  : 1
