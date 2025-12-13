@@ -1,9 +1,10 @@
 using System;
 using System.Net;
+using System.Collections.Generic;
 
 public class Menu
 {
-    private int _points;
+    private int _points = 0;
     private List<Quiz> _quizes = new List<Quiz>();
 
     public void menu()
@@ -24,16 +25,23 @@ public class Menu
             switch (choice)
             {
                 case "1":
-                    
+                    Game game1 = CreateGame("1");
+                    game1.StartGame();
                     break;
 
                 case "2":
+                    Game game2 = CreateGame("2");
+                    game2.StartGame();
                     break;
 
                 case "3":
+                    Game game3 = CreateGame("3");
+                    game3.StartGame();
                     break;
 
                 case "4":
+                    Game game4 = CreateGame("4");
+                    game4.StartGame();
                     break;
 
                 case "5":
@@ -49,23 +57,37 @@ public class Menu
         }
     }
 
-    public Game CreateGame()
+    public Game CreateGame(string choice)
     {
-        return new Game();
+        Quiz quiz = CreateQuiz(choice);
+        return new Game(quiz, 1);
     }
 
-    public Quiz CreateQuiz()
+    public Quiz CreateQuiz(string choice)
     {
-        return new Quiz();
-    }
+        Quiz quiz = null;
+        switch (choice)
+        {
+            case "1":
+                quiz = new Quiz("Multiple choice quiz!", 345);
+                quiz.AddQuestion("Multiple Choice Question");
+                break;
+            case "2":
+                quiz = new Quiz("Short Answer", 345);
+                quiz.AddQuestion("Short Answer Question");
+                break;
 
-    public void SaveQuiz()
-    {
+            case "3":
+                quiz = new Quiz("True or False", 345);
+                quiz.AddQuestion("T/F Question");
+                break;
+            
+            case "4":
+                quiz = new Quiz("Fill in the Blank", 345);
+                quiz.AddQuestion("Fill in the blank");
+                break;
 
-    }
-
-    public void LoadQuiz()
-    {
-        
+        }
+        return quiz;
     }
 }
